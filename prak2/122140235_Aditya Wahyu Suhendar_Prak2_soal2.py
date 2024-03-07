@@ -1,41 +1,39 @@
-import time
+"""
+Aditya Wahyu Suhendar
+122140235
+Praktikum PBO RB (Asal kelas RC)
+Soal 2
+Praktikum-2
+"""
 
-# Decorator to check if the book is available
-def check_availability(func):
+def panggilMethod(func):
     def wrapper(*args, **kwargs):
-        if args[0].available:
-            result = func(*args, **kwargs)
-            args[0].available = False  # Mark the book as borrowed
-            return result
-        else:
-            print(f"Sorry, {args[0].title} is not available for borrowing.")
+        print(f"\nMemanggil metode: {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"Metode {func.__name__} selesai.")
+        return result
     return wrapper
 
-class Book:
-    def __init__(self, title, author, isbn):
-        self.title = title
-        self.author = author
-        self.isbn = isbn
-        self.available = True
-        print(f"Book '{self.title}' by {self.author} added to the library.")
+class Router:
+    def __init__(self, model, mac_address, ip_address):
+        self.model = model
+        self.mac_address = mac_address
+        self.ip_address = ip_address
+        print(f"\nRouter {self.model} diinisialisasi.\nAlamat MAC: {self.mac_address}\nAlamat IP: {self.ip_address}")
+
+    @panggilMethod
+    def configure(self, settings):
+        print(f"\nMengonfigurasi router {self.model} dengan pengaturan: {settings}")
 
     def __del__(self):
-        print(f"Book '{self.title}' by {self.author} returned to the library.")
+        print(f"\nRouter {self.model} sedang dimatikan.\nAlamat MAC: {self.mac_address}\nAlamat IP: {self.ip_address}")
 
-    @check_availability
-    def borrow_book(self):
-        print(f"Book '{self.title}' by {self.author} has been borrowed.")
+if __name__ == "__main__":
+    cisco = Router(model="Cisco", mac_address="00:11:22:33:44:55", ip_address="192.168.1.1")
+    mikrotik = Router(model="MikroTik", mac_address="AA:BB:CC:DD:EE:FF", ip_address="192.168.1.2")
 
-# Creating instances of Book
-book1 = Book(title="Introduction to Python", author="John Smith", isbn="978-1-1234-5678-9")
-book2 = Book(title="Data Science Essentials", author="Jane Doe", isbn="978-2-9876-5432-1")
+    cisco.configure(settings={"SSID": "CiscoNetwork", "Password": "CiscoSecurePassword"})
+    mikrotik.configure(settings={"SSID": "MikroTikNetwork", "Password": "MikroTikSecurePassword"})
 
-# Borrowing books
-book1.borrow_book()  # This should be successful
-book2.borrow_book()  # This should be successful
-
-# Attempting to borrow an already borrowed book
-book1.borrow_book()  # This should fail
-
-# Returning a book to the library
-del book1  # This triggers the destructor and prints a return message
+    del cisco
+    del mikrotik
