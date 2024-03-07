@@ -1,63 +1,64 @@
-class Student:
-    def __init__(self, nim, name, student_class, is_student=True):
+"""
+Aditya Wahyu Suhendar
+122140235
+Praktikum PBO RB (Asal kelas RC)
+Soal 1
+Praktikum-2
+"""
+
+class Mahasiswa:
+    def __init__(self, nim, nama, kelas_mahasiswa, isMahasiswa=True):
         self.__nim = nim
-        self.__name = name
-        self.__class = student_class
-        self.__is_student = is_student
+        self.__nama = nama
+        self.__kelas_mahasiswa = kelas_mahasiswa
+        self.__isMahasiswa = isMahasiswa
 
-    # Getter and Setter for 'name'
-    def get_name(self):
-        return self.__name
+    # Getter & Setter untuk 'nama'
+    def dapatkan_nama(self):
+        return self.__nama
 
-    def set_name(self, new_name):
-        self.__name = new_name
+    def atur_nama(self, nama_baru):
+        self.__nama = nama_baru
 
-    # Getter and Setter for 'nim'
-    def get_nim(self):
+    # Getter & Setter untuk 'nim'
+    def dapatkan_nim(self):
         return self.__nim
 
-    def set_nim(self, new_nim):
-        self.__nim = new_nim
+    def atur_nim(self, nim_baru):
+        self.__nim = nim_baru
 
-    def get_student_status(self):
-        return self.__is_student
+    def dapatkan_status_mahasiswa(self):
+        return self.__isMahasiswa
 
-    def enroll(self):
-        if self.__is_student:
-            return f"{self.__name} has enrolled in {self.__class}."
+    def daftar(self):
+        if self.__isMahasiswa:
+            return f"{self.__nama} telah mendaftar di kelas {self.__kelas_mahasiswa}."
         else:
-            return f"{self.__name} is not a student."
+            return f"{self.__nama} bukan mahasiswa."
 
-    def submit_assignment(self):
-        return f"{self.__name} has submitted an assignment for {self.__class}."
+    def kumpulkan_tugas(self):
+        return f"{self.__nama} telah mengumpulkan tugas untuk kelas {self.__kelas_mahasiswa}."
 
-    def take_exam(self):
-        return f"{self.__name} is taking an exam for {self.__class}."
+    def ikuti_ujian(self):
+        return f"{self.__nama} sedang mengikuti ujian untuk kelas {self.__kelas_mahasiswa}."
 
 
-# Initiating objects with different values
-student1 = Student(nim="001", name="John Doe", student_class="Math")
-student2 = Student(nim="002", name="Jane Doe", student_class="Physics", is_student=False)
+mahasiswa1 = Mahasiswa(nim="122140235", nama="Aditya Wahyu Suhendar", kelas_mahasiswa="RA")
+mahasiswa2 = Mahasiswa(nim="122140236", nama="Rayhan Fadel Irwanto", kelas_mahasiswa="RB", isMahasiswa=False)
 
-# Using getter and setter to retrieve and replace values
-print(f"Before using setter - Name: {student1.get_name()}, NIM: {student1.get_nim()}")
-student1.set_name("John Smith")
-student1.set_nim("003")
-print(f"After using setter - Name: {student1.get_name()}, NIM: {student1.get_nim()}")
+# Menggunakan getter dan setter untuk mengambil dan mengganti nilai
+print(f"Sebelum menggunakan setter :\n- Nama : {mahasiswa1.dapatkan_nama()} \n- NIM  : {mahasiswa1.dapatkan_nim()}")
+mahasiswa1.atur_nama("Jason Surya Padantya")
+mahasiswa1.atur_nim("122140237")
+print(f"Sesudah menggunakan setter :\n- Nama : {mahasiswa1.dapatkan_nama()} \n- NIM  : {mahasiswa1.dapatkan_nim()}\n")
 
-# Performing operations using methods
-print(student1.enroll())
-print(student1.submit_assignment())
-print(student1.take_exam())
+print(mahasiswa1.daftar())
+print(mahasiswa1.kumpulkan_tugas())
+print(mahasiswa1.ikuti_ujian())
 
-print("\n" + "=" * 30 + "\n")
+print("\n" + "=" * 75)
 
-print(f"Before using setter - Name: {student2.get_name()}, NIM: {student2.get_nim()}")
-# Trying to use setter without 'is_student' parameter for the second object
-# This will raise an error because 'is_student' parameter is not provided
-# student2.set_name("Jane Smith")  # Uncommenting this line will raise an error
-# student2.set_nim("004")          # Uncommenting this line will raise an error
-print(f"After using setter - Name: {student2.get_name()}, NIM: {student2.get_nim()}")
+print(f"\nSebelum menggunakan setter :\n- Nama : {mahasiswa2.dapatkan_nama()} \n- NIM  : {mahasiswa2.dapatkan_nim()}")
+print(f"Sesudah menggunakan setter :\n- Nama : {mahasiswa2.dapatkan_nama()} \n- NIM  : {mahasiswa2.dapatkan_nim()}\n")
 
-# Performing operations using methods
-print(student2.enroll())  # This will raise an error due to missing 'is_student' parameter
+print(mahasiswa2.daftar())
