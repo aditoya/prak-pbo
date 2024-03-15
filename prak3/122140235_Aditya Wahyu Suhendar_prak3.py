@@ -35,8 +35,6 @@ class Dagangan:
     def __str__(self):
         return f"{self.__nama} seharga Rp {self.__harga} (stok: {self.__stok})"
 
-
-# Contoh penggunaan
 Dagangan1 = Dagangan("Galon Aqua 19L", 32, 17000)
 Dagangan2 = Dagangan("Gas LPG 5 kg", 22, 88000)
 Dagangan3 = Dagangan("Beras Ramos 5 kg", 13, 68000)
